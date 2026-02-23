@@ -1,5 +1,5 @@
 global:
-  domain: alice-bio-platform.alice-platform.com
+  domain: alice-bio-platform.alicelaw.net
 frontend:
   replicas: 2
   image: alice-bio-platform/frontend:latest
