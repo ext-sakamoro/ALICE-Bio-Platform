@@ -179,7 +179,7 @@ async fn simulate(
         .simulation_type
         .unwrap_or_else(|| "molecular-dynamics".into());
     let steps = req.steps.unwrap_or(10_000);
-    let temp = req.temperature_k.unwrap_or(310.15); // body temperature
+    let _temp = req.temperature_k.unwrap_or(310.15); // body temperature
     let h = fnv1a(req.molecule.as_bytes());
     let energy = -100.0 - (h % 500) as f64;
     let rmsd = (h % 30) as f64 * 0.1 + 0.5;
@@ -211,7 +211,7 @@ async fn screen(
 ) -> Json<ScreenResponse> {
     let t = Instant::now();
     let lib_size = req.library_size.unwrap_or(10_000);
-    let threshold = req.binding_threshold.unwrap_or(100.0); // nM
+    let _threshold = req.binding_threshold.unwrap_or(100.0); // nM
     let h = fnv1a(req.target_protein.as_bytes());
     let hit_count = (lib_size as f64 * 0.005) as usize; // ~0.5% hit rate
     let hits: Vec<ScreenHit> = (0..hit_count.min(20))
